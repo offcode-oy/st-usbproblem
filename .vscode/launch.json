@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Project",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/usbprob_Boot.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "openocd",
+            "device": "STM32H7S3L8Hx",
+            "openOCDPreConfigLaunchCommands":[
+                "gdb_report_data_abort enable",
+            ],
+            "openOCDLaunchCommands": [
+                "init",
+                "reset init",
+                "flash list",
+                "flash banks"
+            ],
+            "configFiles": [
+                "openocd_app.cfg"
+            ],"searchDir": [
+                "tools/st_scripts"
+            ],
+            "rtos": "FreeRTOS",
+            "svdFile": "STM32H7RSxx.svd",
+            "loadFiles": [
+                "${workspaceFolder}/build/usbprob_Boot.elf",
+                "${workspaceFolder}/build/usbprob_Appli.elf"
+            ],
+            "symbolFiles": ["${workspaceFolder}/build/usbprob_Appli.elf","${workspaceFolder}/build/usbprob_Boot.elf"],
+            "preLaunchTask": "build-devkit"
+        }
+    ]
+}

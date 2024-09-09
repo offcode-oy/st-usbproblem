@@ -1,0 +1,8 @@
+Appli/Debug
+Boot/Debug
+Boot/Release
+Appli/Release
+/build
+ExtMemLoader/Debug
+ExtMemLoader/Release
+generated_*.cmake
